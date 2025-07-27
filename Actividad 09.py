@@ -96,3 +96,8 @@ while True:
             mostrar_cantidad_peliculas()
             mostrar_peliculas_por_genero()
             mostrar_la_pelicula_mas_antigua()
+        case "6":
+            print("Gracias por utilizar el programa")
+            break
+        case _:
+            print("Error dato invalido, vuelva a intentarlo")

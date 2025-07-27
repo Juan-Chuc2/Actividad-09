@@ -4,9 +4,9 @@ def saludar():
 def agregar_peliculas():
     movie_entry = int(input("Ingrese la cantidad de peliculas que desea agregar "))
     for i in range (movie_entry):
-        title_movie = input("Ingrese el titulo de la pelicula ")
+        title_movie = input("Ingrese el titulo de la pelicula ").lower().strip()
         year_of_release = int(input("Ingrese el año de la pelicula "))
-        movie_genre = input("Ingrese el genero de la pelicula ")
+        movie_genre = input("Ingrese el genero de la pelicula ").lower().strip()
         movies_cine[0].append(title_movie)
         movies_cine[1].append(year_of_release)
         movies_cine[2].append(movie_genre)
@@ -23,18 +23,28 @@ def buscar_pelicula_por_genero():
     if not movies_cine[0]:
         print("No hay películas registradas.")
         return
-
     search_by_genre = input(" Ingrese el género de la pelicula que desea encontrar: ").strip().lower()
     encontrado = False
-
     print(f"\n Películas del género {search_by_genre}:")
     for i in range(len(movies_cine[2])):
         if movies_cine[2][i].strip().lower() == search_by_genre:
             print(f"- Título: {movies_cine[0][i]}, Año: {movies_cine[1][i]}")
             encontrado = True
-
     if not encontrado:
         print(" No se encontraron películas de ese género.")
+def eliminar_una_pelicula_por_titulo():
+    if movies_cine:
+        delete_movie =input("Ingrese el nombre de la pelicula que desea borrar: ").lower().strip()
+        if delete_movie in movies_cine[0]:
+            indice_name_movie = movies_cine[0].index(delete_movie)
+            movies_cine[0].pop(indice_name_movie)
+            movies_cine[1].pop(indice_name_movie)
+            movies_cine[2].pop(indice_name_movie)
+            print(f"La pelicula con el nombre {delete_movie} ha sido eliminda en su totalidad")
+        else:
+            print(f"no se encontro ningunapelicula con el nombre {delete_movie}")
+    else:
+        print("no se ha registrado ninguna pelicula")
 saludar()
 while True:
     print("\n ---MENU---")
@@ -52,3 +62,5 @@ while True:
             mostrar_peliculas()
         case "3":
             buscar_pelicula_por_genero()
+        case "4":
+            eliminar_una_pelicula_por_titulo()

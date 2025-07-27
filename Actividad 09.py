@@ -19,6 +19,22 @@ def mostrar_peliculas():
             print(f"Titulo {movies_cine[0][i]}")
             print(f"Año {movies_cine[1][i]}")
             print(f"Genero {movies_cine[2][i]}")
+def buscar_pelicula_por_genero():
+    if not movies_cine[0]:
+        print("📭 No hay películas registradas.")
+        return
+
+    search_by_genre = input(" Ingrese el género de la pelicula que desea encontrar: ").strip().lower()
+    encontrado = False
+
+    print(f"\n Películas del género {search_by_genre}:")
+    for i in range(len(movies_cine[2])):
+        if movies_cine[2][i].strip().lower() == search_by_genre:
+            print(f"- Título: {movies_cine[0][i]}, Año: {movies_cine[1][i]}")
+            encontrado = True
+
+    if not encontrado:
+        print(" No se encontraron películas de ese género.")
 saludar()
 while True:
     print("\n ---MENU---")
@@ -34,3 +50,5 @@ while True:
             agregar_peliculas()
         case "2":
             mostrar_peliculas()
+        case "3":
+            buscar_pelicula_por_genero()

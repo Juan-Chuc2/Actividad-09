@@ -21,7 +21,7 @@ def mostrar_peliculas():
             print(f"Genero {movies_cine[2][i]}")
 def buscar_pelicula_por_genero():
     if not movies_cine[0]:
-        print("📭 No hay películas registradas.")
+        print("No hay películas registradas.")
         return
 
     search_by_genre = input(" Ingrese el género de la pelicula que desea encontrar: ").strip().lower()

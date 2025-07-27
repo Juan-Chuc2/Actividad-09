@@ -45,6 +45,34 @@ def eliminar_una_pelicula_por_titulo():
             print(f"no se encontro ningunapelicula con el nombre {delete_movie}")
     else:
         print("no se ha registrado ninguna pelicula")
+def mostrar_cantidad_peliculas():
+    if movies_cine and movies_cine[0]:
+        print(f"Se registraron {len(movies_cine[0])} peliculas")
+    else:
+        print("No se ha echo ningun registro")
+def mostrar_peliculas_por_genero():
+    if movies_cine and movies_cine[2]:
+        counter_genre ={}
+        for genre in movies_cine[2]:
+            if genre in counter_genre:
+                counter_genre[genre] +=1
+            else:
+                counter_genre[genre] =1
+                print("Cantidad de peliculas por genero")
+                for genre,cantidad in counter_genre.items():
+                    print(f"{genre.capitalize()}: {cantidad}")
+    else:
+        print("no hay ninguna pelicula registrada")
+def mostrar_la_pelicula_mas_antigua ():
+    if movies_cine and movies_cine[1]:
+        year_antiguo = min(movies_cine[1])
+        indice = movies_cine.index(year_antiguo)
+        print("\n -La pelicula mas reciente-")
+        print(f"Nombre {movies_cine[0][indice]}")
+        print(f"Año de estreno: {movies_cine[1][indice]}")
+        print(f"Genero: {movies_cine[2][indice]}")
+    else:
+        print("No hay ninguna pelicula registrada")
 saludar()
 while True:
     print("\n ---MENU---")
@@ -64,3 +92,7 @@ while True:
             buscar_pelicula_por_genero()
         case "4":
             eliminar_una_pelicula_por_titulo()
+        case "5":
+            mostrar_cantidad_peliculas()
+            mostrar_peliculas_por_genero()
+            mostrar_la_pelicula_mas_antigua()

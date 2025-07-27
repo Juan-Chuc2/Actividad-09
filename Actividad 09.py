@@ -10,6 +10,15 @@ def agregar_peliculas():
         movies_cine[0].append(title_movie)
         movies_cine[1].append(year_of_release)
         movies_cine[2].append(movie_genre)
+def mostrar_peliculas():
+    if not movies_cine[0]:
+        print("No se ha echo ningun registro de pelicula")
+    else:
+        print("\n Peliculas registradas")
+        for i in range(len(movies_cine[0])):
+            print(f"Titulo {movies_cine[0][i]}")
+            print(f"Año {movies_cine[1][i]}")
+            print(f"Genero {movies_cine[2][i]}")
 saludar()
 while True:
     print("\n ---MENU---")
@@ -19,7 +28,9 @@ while True:
     print("4. Eliminar una pelicula")
     print("5. Ver la estadistica del catalogo")
     print("6. Salir del programa")
-    option = input("ingrese una opcion (1-6)")
+    option = input("ingrese una opcion (1-6) ")
     match option:
         case "1":
             agregar_peliculas()
+        case "2":
+            mostrar_peliculas()
